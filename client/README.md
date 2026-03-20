@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# M K Associates Website
+
+Static multi-page company website for **M K Associates**, focused on cashew and walnut machinery.
+
+## Overview
+
+This project is built with Next.js App Router and TypeScript, using Tailwind CSS v4 with a Material 3 token-based theme.
+
+The website includes:
+
+1. Home page with company profile and key stats
+2. Products page with category-based listing (Cashew/Walnut)
+3. Customers page grouped by product segment
+4. Contact page with clickable phone, email, and map links
+5. Responsive header with mobile menu + Products submenu
+
+## Tech Stack
+
+1. Next.js 16
+2. React 19
+3. TypeScript
+4. Tailwind CSS v4
+5. Custom global CSS token system (Material 3 palette)
+
+## Project Structure
+
+```text
+client/
+	public/
+		logo.png
+	src/
+		app/
+			page.tsx
+			products/page.tsx
+			customers/page.tsx
+			contact/page.tsx
+			layout.tsx
+			globals.css
+		components/
+			site-header.tsx
+			site-footer.tsx
+			products-view.tsx
+			product-card.tsx
+		data/
+			company-details.ts
+			products.ts
+			customers.ts
+	tailwind.config.ts
+```
+
+## Routes
+
+1. `/` - Home
+2. `/products` - Products (defaults to cashew)
+3. `/products?category=cashew` - Cashew products
+4. `/products?category=walnut` - Walnut products
+5. `/customers` - Customer segments
+6. `/contact` - Contact details
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+1. `npm run dev` - Start local dev server
+2. `npm run build` - Production build
+3. `npm run start` - Run production server
+4. `npm run lint` - Run ESLint
 
-To learn more about Next.js, take a look at the following resources:
+## Content Management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Update business content from data files:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Company info: `src/data/company-details.ts`
+2. Product catalog: `src/data/products.ts`
+3. Customer list: `src/data/customers.ts`
 
-## Deploy on Vercel
+## Theming
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Material token values are defined in `src/app/globals.css`
+2. Tailwind color mapping is defined in `tailwind.config.ts`
+3. Theme is configured as light-only
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+1. Header supports active-link highlighting for both normal and submenu routes.
+2. Products submenu closes on navigation and supports mobile behavior.
+3. Contact details use actionable links (`tel`, `mailto`, maps).
