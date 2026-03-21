@@ -86,7 +86,7 @@ export default function Home() {
             <article className="panel border-outline-variant bg-surface">
               <h3 className="text-on-surface">Walnut Machinery</h3>
               <p className="muted text-on-surface-variant">
-                {walnutCount} model(s) focused on high whole-kernel output.
+                {walnutCount} model(s) focused on high kernel output.
               </p>
             </article>
             <article className="panel border-outline-variant bg-surface">

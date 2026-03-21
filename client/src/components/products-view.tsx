@@ -16,7 +16,7 @@ export function ProductsView() {
   return (
     <section className="section bg-background text-foreground">
       <div className="shell">
-        <h1 className="section-title text-on-surface">Our Products</h1>
+        {/* <h1 className="section-title text-on-surface text-4xl font-bold leading-tight md:text-5xl">Our Products</h1> */}
         {/* <p className="muted text-on-surface-variant">
           Product lines are grouped by processing category for faster selection.
         </p> */}
@@ -47,7 +47,7 @@ export function ProductsView() {
         </div> */}
 
         <div className="product-category">
-          <h2 className="section-title text-primary">{selectedLabel}</h2>
+          <h2 className="mb-4 text-2xl font-semibold leading-tight text-secondary md:text-3xl">{selectedLabel}</h2>
           <div className="product-grid">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />

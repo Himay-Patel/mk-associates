@@ -331,7 +331,7 @@ a {
 }
 
 .product-image-placeholder {
-  background: linear-gradient(140deg, var(--brand-soft), var(--brand));
+  background: white;
   min-height: 220px;
   display: grid;
   place-items: center;
