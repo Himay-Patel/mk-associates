@@ -80,13 +80,13 @@ export default function Home() {
             <article className="panel border-outline-variant bg-surface">
               <h3 className="text-on-surface">Cashew Machinery</h3>
               <p className="muted text-on-surface-variant">
-                {cashewCount} model(s) designed for high shelling throughput.
+                {cashewCount} products.
               </p>
             </article>
             <article className="panel border-outline-variant bg-surface">
               <h3 className="text-on-surface">Walnut Machinery</h3>
               <p className="muted text-on-surface-variant">
-                {walnutCount} model(s) focused on high kernel output.
+                {walnutCount} products.
               </p>
             </article>
             <article className="panel border-outline-variant bg-surface">

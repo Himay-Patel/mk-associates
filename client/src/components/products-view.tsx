@@ -1,15 +1,11 @@
-"use client";
-
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-
 import { ProductCard } from "@/components/product-card";
 import { products } from "@/data/products";
 
-export function ProductsView() {
-  const searchParams = useSearchParams();
-  const category = searchParams.get("category") ?? undefined;
-  const selectedCategory = category === "walnut" ? "walnut" : "cashew";
+type ProductsViewProps = {
+  selectedCategory: "cashew" | "walnut";
+};
+
+export function ProductsView({ selectedCategory }: ProductsViewProps) {
   const filteredProducts = products.filter((product) => product.type === selectedCategory);
   const selectedLabel = selectedCategory === "cashew" ? "Cashew Machinery" : "Walnut Machinery";
 
