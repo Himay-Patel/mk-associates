@@ -172,7 +172,7 @@ export function SiteHeader() {
 
         <nav
           id="main-navigation"
-          className={`main-nav ${mobileMenuOpen ? "is-open" : ""}`}
+          className={mobileMenuOpen ? "main-nav is-open" : "main-nav"}
           aria-label="Main navigation"
         >
           {navItems.map((item) => {

@@ -7,6 +7,9 @@ import { products } from "@/data/products";
 export default function Home() {
   const cashewCount = products.filter((product) => product.type === "cashew").length;
   const walnutCount = products.filter((product) => product.type === "walnut").length;
+  const mapSearchUrl = `https://www.google.com/maps?q=${companyDetails.coordinates.latitude},${companyDetails.coordinates.longitude}`;
+  const phoneHref = `tel:${companyDetails.phone.replace(/\s+/g, "")}`;
+  const emailHref = `mailto:${companyDetails.email}`;
 
   return (
     <>
@@ -32,14 +35,20 @@ export default function Home() {
 
           <aside className="panel border-outline-variant bg-surface-container text-on-surface">
             <h2 className="section-title text-on-surface">Quick Contact</h2>
-            <p className="muted text-on-surface-variant">Phone: {companyDetails.phone}</p>
-            <p className="muted text-on-surface-variant">Email: {companyDetails.email}</p>
-            <p className="muted text-on-surface-variant">Address: {companyDetails.address}</p>
+            <p className="muted text-on-surface-variant">
+              Phone: <a className="contact-link" href={phoneHref}>{companyDetails.phone}</a>
+            </p>
+            <p className="muted text-on-surface-variant">
+              Email: <a className="contact-link" href={emailHref}>{companyDetails.email}</a>
+            </p>
+            <p className="muted text-on-surface-variant">
+              Address: <a className="contact-link" href={mapSearchUrl} target="_blank" rel="noreferrer">{companyDetails.address}</a>
+            </p>
           </aside>
         </div>
       </section>
 
-      <section className="section bg-background text-foreground">
+      {/* <section className="section bg-background text-foreground">
         <div className="shell stats">
           <article className="panel border-outline-variant bg-surface-container">
             <strong className="text-primary">{products.length}</strong>
@@ -58,7 +67,7 @@ export default function Home() {
             <span className="muted text-on-surface-variant">Trusted Customers</span>
           </article>
         </div>
-      </section>
+      </section> */}
 
       <section className="section bg-background text-foreground">
         <div className="shell panel border-outline-variant bg-surface-container-low">

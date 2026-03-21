@@ -52,7 +52,7 @@ export const products: Product[] = [
         'name': 'Walnut Shelling Line - 600',
         'type': 'walnut',
         'keyFeatures': 'Working parts use S.S. 304, and the machine structure is built in stainless steel. The machine is controlled by a PLC programmer, with control functions and running parameters displayed on a 7-inch touch screen.',
-        'image': '/products/walnut/wsl-600.jpg',
+        'image': '/products/walnut/wsl-600.jpeg',
         'specifications': {
             'capacity': '500-600 kg/hr',
             'dimension': 'L9m X W3m X H4m',
