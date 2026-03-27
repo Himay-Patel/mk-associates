@@ -62,6 +62,7 @@ export function ProductCard({ product, eagerImage = false }: ProductCardProps) {
             alt={product.name}
             fill
             sizes="(max-width: 900px) 100vw, 280px"
+            quality={72}
             className="object-contain object-center"
             loading={eagerImage ? "eager" : "lazy"}
             priority={eagerImage}
@@ -110,6 +111,7 @@ export function ProductCard({ product, eagerImage = false }: ProductCardProps) {
                 alt={product.name}
                 fill
                 sizes="100vw"
+                quality={82}
                 className="object-contain object-center"
                 priority
               />
