@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import { companyDetails } from "@/data/company-details";
 
@@ -68,6 +68,7 @@ function NavLink({
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsMenuOpen, setProductsMenuOpen] = useState(false);
   const productsGroupRef = useRef<HTMLDivElement>(null);
@@ -92,7 +93,19 @@ export function SiteHeader() {
       return false;
     }
 
-    return !queryString;
+    if (!queryString) {
+      return true;
+    }
+
+    const targetParams = new URLSearchParams(queryString);
+
+    for (const [key, value] of targetParams.entries()) {
+      if (searchParams.get(key) !== value) {
+        return false;
+      }
+    }
+
+    return true;
   };
 
   useEffect(() => {

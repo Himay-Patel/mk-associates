@@ -17,7 +17,11 @@ export function SiteFooter() {
         <div>
           <h3>Quick Links</h3>
           <div className="footer-links">
-            <Link href="/products">Products</Link>
+            <span className="footer-link-label" aria-label="Products">Products</span>
+            <div className="footer-sub-links" aria-label="Product categories">
+              <Link href="/products?category=cashew">Cashew</Link>
+              <Link href="/products?category=walnut">Walnut</Link>
+            </div>
             <Link href="/customers">Customers</Link>
             <Link href="/contact">Contact</Link>
           </div>

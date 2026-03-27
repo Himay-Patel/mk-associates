@@ -12,12 +12,12 @@ export function ProductsView({ selectedCategory }: ProductsViewProps) {
   return (
     <section className="section bg-background text-foreground">
       <div className="shell">
-        {/* <h1 className="section-title text-on-surface text-4xl font-bold leading-tight md:text-5xl">Our Products</h1> */}
-        {/* <p className="muted text-on-surface-variant">
-          Product lines are grouped by processing category for faster selection.
-        </p> */}
+        {/* <h1 className="section-title text-on-surface text-4xl font-bold leading-tight md:text-5xl">Our Products</h1>
+        <p className="muted text-on-surface-variant">
+          Use category links under Products to quickly open the right machine line.
+        </p>
 
-        {/* <div className="mb-6 mt-4 flex flex-wrap gap-3">
+        <div className="mb-6 mt-4 flex flex-wrap gap-3">
           <Link
             href="/products?category=cashew"
             className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${

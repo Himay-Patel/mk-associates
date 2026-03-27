@@ -483,12 +483,30 @@ a {
   gap: 0.35rem;
 }
 
-.footer-links a {
+.footer-sub-links {
+  display: grid;
+  gap: 0.2rem;
+  margin-left: 0.9rem;
+  padding-left: 0.75rem;
+  border-left: 1px dashed var(--line);
+}
+
+.footer-sub-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.footer-links a,
+.footer-links .footer-link-label {
   color: var(--brand);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 0.15rem;
   text-decoration-thickness: 1px;
+}
+
+.footer-links .footer-link-label {
+  cursor: default;
 }
 
 .footer-links a:hover,
