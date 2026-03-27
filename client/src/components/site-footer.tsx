@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { companyDetails } from "@/data/company-details";
 
-const mapSearchUrl = `https://www.google.com/maps?q=${companyDetails.coordinates.latitude},${companyDetails.coordinates.longitude}`;
 const phoneHref = `tel:${companyDetails.phone.replace(/\s+/g, "")}`;
 const emailHref = `mailto:${companyDetails.email}`;
 
@@ -37,14 +36,7 @@ export function SiteFooter() {
             </a>
           </p>
           <p className="contact-item">
-            <a
-              className="contact-link"
-              href={mapSearchUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {companyDetails.address}
-            </a>
+            {companyDetails.officeAddress}
           </p>
         </div>
       </div>

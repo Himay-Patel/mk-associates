@@ -1,13 +1,12 @@
 import Link from "next/link";
 
-import { customers } from "@/data/customers";
 import { companyDetails } from "@/data/company-details";
 import { products } from "@/data/products";
 
 export default function Home() {
   const cashewCount = products.filter((product) => product.type === "cashew").length;
   const walnutCount = products.filter((product) => product.type === "walnut").length;
-  const mapSearchUrl = `https://www.google.com/maps?q=${companyDetails.coordinates.latitude},${companyDetails.coordinates.longitude}`;
+  const mapSearchUrl = `https://www.google.com/maps?q=${companyDetails.coordinates.factory.latitude},${companyDetails.coordinates.factory.longitude}`;
   const phoneHref = `tel:${companyDetails.phone.replace(/\s+/g, "")}`;
   const emailHref = `mailto:${companyDetails.email}`;
 
@@ -36,13 +35,16 @@ export default function Home() {
           <aside className="panel border-outline-variant bg-surface-container text-on-surface">
             <h2 className="section-title text-on-surface">Quick Contact</h2>
             <p className="muted text-on-surface-variant">
-              Phone: <a className="contact-link" href={phoneHref}>{companyDetails.phone}</a>
+              <strong>Phone:</strong> <a className="contact-link" href={phoneHref}>{companyDetails.phone}</a>
             </p>
             <p className="muted text-on-surface-variant">
-              Email: <a className="contact-link" href={emailHref}>{companyDetails.email}</a>
+              <strong>Email:</strong> <a className="contact-link" href={emailHref}>{companyDetails.email}</a>
             </p>
             <p className="muted text-on-surface-variant">
-              Address: <a className="contact-link" href={mapSearchUrl} target="_blank" rel="noreferrer">{companyDetails.address}</a>
+              <strong>Office Address:</strong> {companyDetails.officeAddress}
+            </p>
+            <p className="muted text-on-surface-variant">
+              <strong>Factory Address:</strong> <a className="contact-link" href={mapSearchUrl} target="_blank" rel="noreferrer">{companyDetails.factoryAddress}</a>
             </p>
           </aside>
         </div>
@@ -76,7 +78,7 @@ export default function Home() {
             Our portfolio is organized around two processing categories to support different
             production scales and quality targets.
           </p>
-          <div className="stats">
+          <div className="stats category-stats">
             <article className="panel border-outline-variant bg-surface">
               <h3 className="text-on-surface">Cashew Machinery</h3>
               <p className="muted text-on-surface-variant">
@@ -89,12 +91,12 @@ export default function Home() {
                 {walnutCount} products.
               </p>
             </article>
-            <article className="panel border-outline-variant bg-surface">
+            {/* <article className="panel border-outline-variant bg-surface">
               <h3 className="text-on-surface">After-Sales Support</h3>
               <p className="muted text-on-surface-variant">
                 Installation support and customer-first technical assistance.
               </p>
-            </article>
+            </article> */}
           </div>
         </div>
       </section>

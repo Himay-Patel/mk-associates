@@ -1,6 +1,6 @@
 import { companyDetails } from "@/data/company-details";
 
-const mapSearchUrl = `https://www.google.com/maps?q=${companyDetails.coordinates.latitude},${companyDetails.coordinates.longitude}`;
+const mapSearchUrl = `https://www.google.com/maps?q=${companyDetails.coordinates.factory.latitude},${companyDetails.coordinates.factory.longitude}`;
 const phoneHref = `tel:${companyDetails.phone.replace(/\s+/g, "")}`;
 const emailHref = `mailto:${companyDetails.email}`;
 
@@ -17,9 +17,13 @@ export default function ContactPage() {
           <article className="panel border-outline-variant bg-surface-container">
             <h2 className="text-primary">Office Details</h2>
             <p className="contact-item">
-              <strong>Address:</strong>{" "}
+              <strong>Office Address:</strong> {companyDetails.officeAddress}
+            </p>
+            <p className="contact-item">
+              <strong>Factory Address:</strong>
+              {" "}
               <a className="contact-link" href={mapSearchUrl} target="_blank" rel="noreferrer">
-                {companyDetails.address}
+                {companyDetails.factoryAddress}
               </a>
             </p>
             <p className="contact-item">
@@ -38,7 +42,7 @@ export default function ContactPage() {
 
           <article className="panel border-outline-variant bg-surface-container">
             <h2 className="text-primary">Business Information</h2>
-            <p className="muted text-on-surface-variant">Specialist in Cashew and Walnut Machinery</p>
+            <p className="muted text-on-surface-variant">{companyDetails.tagline}</p>
             <p>
               To request quotations, share your expected processing capacity and product type
               (cashew or walnut).

@@ -1,10 +1,13 @@
 export type CompanyDetails = {
     name: string;
     tagline: string;
-    address: string;
+    factoryAddress: string;
+    officeAddress: string;
     coordinates: {
-        latitude: number;
-        longitude: number;
+        factory: {
+            latitude: number;
+            longitude: number;
+        }
     };
     phone: string;
     email: string;
@@ -15,10 +18,13 @@ export type CompanyDetails = {
 export const companyDetails: CompanyDetails = {
     'name': 'M K Associates',
     'tagline': 'Specialist in Cashew and Walnut Machinery',
-    'address': '31, Meldi Estate, Gota, Ahmedabad -382481',
+    'factoryAddress': '31, Meldi Estate, Gota, Ahmedabad - 382481',
+    'officeAddress': '42/250, Vijaynagar Flats, Ankur Road, Vijaynagar, Naranpura, Ahmedabad - 380013',
     'coordinates': {
-        'latitude': 23.08980875938142,
-        'longitude': 72.5377142426995
+        'factory': {
+            'latitude': 23.08980875938142,
+            'longitude': 72.5377142426995
+        }
     },
     'phone': '+91 9879041476',
     'email': 'hkmaikal@gmail.com',
