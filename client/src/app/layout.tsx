@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope, Playfair_Display } from "next/font/google";
-import { Suspense } from "react";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { companyDetails } from "@/data/company-details";
 import "./globals.css";
 
 const bodyFont = Manrope({
@@ -17,12 +17,12 @@ const headingFont = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "M K Associates",
-  description: "M K Associates manufactures and supplies cashew and walnut shelling machinery with high efficiency and robust industrial performance.",
+  title: companyDetails.name,
+  description: companyDetails.description,
   icons: {
-    icon: [{ url: "/logo.png", type: "image/png" }],
-    shortcut: [{ url: "/logo.png", type: "image/png" }],
-    apple: [{ url: "/logo.png", type: "image/png" }],
+    icon: [{ url: companyDetails.logo, type: "image/png" }],
+    shortcut: [{ url: companyDetails.logo, type: "image/png" }],
+    apple: [{ url: companyDetails.logo, type: "image/png" }],
   },
 };
 
@@ -34,9 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bodyFont.variable} ${headingFont.variable}`}>
       <body>
-        <Suspense fallback={null}>
-          <SiteHeader />
-        </Suspense>
+        <SiteHeader />
         <main className="main-content">{children}</main>
         <SiteFooter />
       </body>
