@@ -7,6 +7,7 @@ import type { Product } from "@/data/products";
 
 type ProductCardProps = {
   product: Product;
+  eagerImage?: boolean;
 };
 
 const specFields: Array<{
@@ -21,7 +22,7 @@ const specFields: Array<{
   { key: "powerSupply", label: "Power Supply" },
 ];
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, eagerImage = false }: ProductCardProps) {
   const [isZoomOpen, setIsZoomOpen] = useState(false);
 
   const visibleSpecFields = specFields.filter(({ key }) => {
@@ -62,7 +63,8 @@ export function ProductCard({ product }: ProductCardProps) {
             fill
             sizes="(max-width: 900px) 100vw, 280px"
             className="object-contain object-center"
-            priority={false}
+            loading={eagerImage ? "eager" : "lazy"}
+            priority={eagerImage}
           />
         </button>
 

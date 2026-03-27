@@ -45,8 +45,8 @@ export function ProductsView({ selectedCategory }: ProductsViewProps) {
         <div className="product-category">
           <h2 className="mb-4 text-2xl font-semibold leading-tight text-secondary md:text-3xl">{selectedLabel}</h2>
           <div className="product-grid">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {filteredProducts.map((product, index) => (
+              <ProductCard key={product.id} product={product} eagerImage={index === 0} />
             ))}
           </div>
         </div>
