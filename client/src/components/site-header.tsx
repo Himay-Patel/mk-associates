@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import { companyDetails } from "@/data/company-details";
 
@@ -68,11 +68,9 @@ function NavLink({
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsMenuOpen, setProductsMenuOpen] = useState(false);
   const productsGroupRef = useRef<HTMLDivElement>(null);
-  const searchKey = searchParams.toString();
 
   const closeMenus = () => {
     setMobileMenuOpen(false);
@@ -94,30 +92,30 @@ export function SiteHeader() {
       return false;
     }
 
-    if (!queryString) {
-      return true;
-    }
-
-    const targetQuery = new URLSearchParams(queryString);
-    for (const [key, value] of targetQuery.entries()) {
-      if (searchParams.get(key) !== value) {
-        return false;
-      }
-    }
-
-    return true;
+    return !queryString;
   };
 
   useEffect(() => {
-    closeMenus();
-  }, [pathname, searchKey]);
+    if (!productsMenuOpen) {
+      return;
+    }
 
-  useEffect(() => {
     const onClickOutside = (event: MouseEvent) => {
       if (productsGroupRef.current && !productsGroupRef.current.contains(event.target as Node)) {
         setProductsMenuOpen(false);
       }
     };
+
+    document.addEventListener("mousedown", onClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside);
+    };
+  }, [productsMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen && !productsMenuOpen) {
+      return;
+    }
 
     const onEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -125,18 +123,21 @@ export function SiteHeader() {
       }
     };
 
-    document.addEventListener("mousedown", onClickOutside);
     document.addEventListener("keydown", onEscape);
     return () => {
-      document.removeEventListener("mousedown", onClickOutside);
       document.removeEventListener("keydown", onEscape);
     };
-  }, []);
+  }, [mobileMenuOpen, productsMenuOpen]);
 
   return (
     <header className="site-header border-outline-variant bg-surface/90 text-on-surface">
       <div className="shell nav-wrap">
-        <Link href="/" className="brand text-on-surface" aria-label={`${companyDetails.name} home`}>
+        <Link
+          href="/"
+          className="brand text-on-surface"
+          aria-label={`${companyDetails.name} home`}
+          onClick={closeMenus}
+        >
           <span className="brand-mark relative overflow-hidden">
             {companyDetails.logo ? (
               <Image
